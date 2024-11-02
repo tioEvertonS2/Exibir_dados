@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  position: relative;
 }
-
 
 .pages {
   width: 90%;
@@ -17,6 +17,8 @@
   min-height: calc(100vh - 60px);
   overflow-x: hidden;
   color: rgb(0, 0, 0);
+  position: relative;
+  z-index: 100; /* Garanta que isso está acima do valor na BarraLateral */
 }
 
 .planodefundo {
@@ -25,6 +27,7 @@
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  z-index: 1; /* Mantém isso atrás de outros elementos */
 }
 
 .planodefundo::before {
