@@ -1,5 +1,22 @@
 import React, { useState } from 'react';
+import Select from 'react-select'; 
 import './Adicionar.css';
+
+const doencasOptions = [
+    { value: 'Hipertensão', label: 'Hipertensão' },
+    { value: 'Diabetes tipo I', label: 'Diabetes tipo I' },
+    { value: 'Diabetes tipo II', label: 'Diabetes tipo II' },
+    { value: 'Hipotensão', label: 'Hipotensão' },
+    { value: 'Outros', label: 'Outros' }, // Para outros
+];
+
+const alergiasOptions = [
+    { value: 'Glúten', label: 'Glúten' },
+    { value: 'Leite', label: 'Leite' },
+    { value: 'Ovo', label: 'Ovo' },
+    { value: 'Amendoim', label: 'Amendoim' },
+    { value: 'Outros', label: 'Outros' }, 
+];
 
 const FormularioPaciente = () => {
     const [paciente, setPaciente] = useState({
@@ -8,12 +25,12 @@ const FormularioPaciente = () => {
         dataNascimento: '',
         dataConsulta: '',
         relato: '',
-        doencas: [],
-        alergias: [],
+        doencasPreexistentes: '',
+        alergias: '',
         medicacoes: '',
         diagnostico: '',
-        exames: '',
-        anotacoes: '',
+        examesSolicitados: '',
+        anotacoesRetorno: '',
     });
 
     const handleChange = (e) => {
@@ -24,25 +41,49 @@ const FormularioPaciente = () => {
         }));
     };
 
-    const handleCheckboxChange = (e) => {
-        const { name, checked } = e.target;
+    const handleMultiSelectChange = (selectedOptions, name) => {
         setPaciente((prev) => ({
             ...prev,
-            [name]: checked
-                ? [...prev[name], e.target.value]
-                : prev[name].filter((item) => item !== e.target.value),
+            [name]: selectedOptions ? selectedOptions.map(option => option.value) : [],
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(paciente);
+    
+            const pacienteData = {
+                ...paciente,
+                doencasPreexistentes: JSON.stringify(paciente.doencasPreexistentes),
+                alergias: JSON.stringify(paciente.alergias),
+        };
+
+        try {
+            const response = await fetch('http://localhost:5001/api/pacientes', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(pacienteData)
+            });
+            if (response.ok) {
+                alert("Paciente adicionado com sucesso!");
+                setPaciente({
+                    nome: '', cpf: '', dataNascimento: '', dataConsulta: '',
+                    relato: '', doencasPreexistentes: [], alergias: [],
+                    medicacoes: '', diagnostico: '', examesSolicitados: '',
+                    anotacoesRetorno: ''
+                });
+            } else {
+                alert("Erro ao adicionar paciente.");
+            }
+        } catch (error) {
+            console.error("Erro ao adicionar paciente:", error);
+        }
     };
 
+    
     return (
         <form className="formulario-paciente" onSubmit={handleSubmit}>
             <div className="form-group">
-                <label>Paciente:</label>
+                <label>Nome Completo:</label>
                 <input type="text" name="nome" value={paciente.nome} onChange={handleChange} />
             </div>
             <div className="form-group">
@@ -63,45 +104,23 @@ const FormularioPaciente = () => {
             </div>
             <div className="form-group">
                 <label>Doenças preexistentes:</label>
-                <div className="checkbox-group">
-                    <label>
-                        <input type="checkbox" name="doencas" value="Hipertensão" onChange={handleCheckboxChange} />
-                        Hipertensão
-                    </label>
-                    <label>
-                        <input type="checkbox" name="doencas" value="Diabetes tipo I" onChange={handleCheckboxChange} />
-                        Diabetes tipo I
-                    </label>
-                    <label>
-                        <input type="checkbox" name="doencas" value="Diabetes tipo II" onChange={handleCheckboxChange} />
-                        Diabetes tipo II
-                    </label>
-                    <label>
-                        <input type="checkbox" name="doencas" value="Hipotensão" onChange={handleCheckboxChange} />
-                        Hipotensão
-                    </label>
-                </div>
+                <Select
+                    isMulti
+                    options={doencasOptions}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                    onChange={(selectedOptions) => handleMultiSelectChange(selectedOptions, 'doencasPreexistentes')}
+                />
             </div>
             <div className="form-group">
                 <label>Alergias:</label>
-                <div className="checkbox-group">
-                    <label>
-                        <input type="checkbox" name="alergias" value="Glúten" onChange={handleCheckboxChange} />
-                        Glúten
-                    </label>
-                    <label>
-                        <input type="checkbox" name="alergias" value="Leite" onChange={handleCheckboxChange} />
-                        Leite
-                    </label>
-                    <label>
-                        <input type="checkbox" name="alergias" value="Ovo" onChange={handleCheckboxChange} />
-                        Ovo
-                    </label>
-                    <label>
-                        <input type="checkbox" name="alergias" value="Amendoim" onChange={handleCheckboxChange} />
-                        Amendoim
-                    </label>
-                </div>
+                <Select
+                    isMulti
+                    options={alergiasOptions}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                    onChange={(selectedOptions) => handleMultiSelectChange(selectedOptions, 'alergias')}
+                />
             </div>
             <div className="form-group">
                 <label>Medicações em uso:</label>
@@ -113,11 +132,11 @@ const FormularioPaciente = () => {
             </div>
             <div className="form-group">
                 <label>Exames Solicitados:</label>
-                <input type="text" name="exames" value={paciente.exames} onChange={handleChange} />
+                <input type="text" name="examesSolicitados" value={paciente.examesSolicitados} onChange={handleChange} />
             </div>
             <div className="form-group">
                 <label>Anotações de Retorno:</label>
-                <textarea name="anotacoes" value={paciente.anotacoes} onChange={handleChange} />
+                <textarea name="anotacoesRetorno" value={paciente.anotacoesRetorno} onChange={handleChange} />
             </div>
             <button type="submit" className="submit-button">Enviar</button>
         </form>

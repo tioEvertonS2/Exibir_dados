@@ -10,7 +10,7 @@
   position: fixed;
   padding: 10px;
   height: 100%;
-  z-index: 100;
+  z-index: 100; /* Reduzido para garantir que o formulário tenha prioridade */
   justify-content: flex-start;
 }
 

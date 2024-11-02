@@ -18,7 +18,7 @@
   overflow-x: hidden;
   color: rgb(0, 0, 0);
   position: relative;
-  z-index: 100; /* Garanta que isso está acima do valor na BarraLateral */
+  z-index: 10; /* Ajuste para garantir que está acima da BarraLateral */
 }
 
 .planodefundo {
@@ -38,6 +38,7 @@
   right: 0;
   bottom: 0;
   background-color: rgba(255, 255, 255, 0.415);
+  z-index: 1;
 }
 
 html, body {

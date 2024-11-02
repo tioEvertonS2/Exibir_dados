@@ -9,14 +9,13 @@
   position: fixed;
   width: 100%;
   height: 70px;
-  z-index: 100;
+  z-index: 1100; /* Isso é adequado se a barra superior deve estar acima de tudo */
   box-sizing: border-box;
   -webkit-box-align: center;
   -webkit-box-pack: center;
   padding: 0rem 1.5rem;
   min-height: 74px;
 }
-  
 
 .icon {
     display: inline-block;
