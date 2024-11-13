@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import './BarraSuperior.css';
 
 const BarraSuperior = () => {
-  // Estado para controlar a visibilidade da janelinha
   const [showUserInfo, setShowUserInfo] = useState(false);
 
-  // Função para alternar a exibição da janelinha
   const toggleUserInfo = () => {
     setShowUserInfo(!showUserInfo);
   };
@@ -13,10 +11,10 @@ const BarraSuperior = () => {
   return (
     <div className="BarraSuperior">
       <div className="BarraSuperior-left">
-        <div className="Nomedoprojeto">
-          <p>Projeto Super</p>
+          <img src="/logo-super.png" 
+          alt="Foto de Perfil" 
+          className="logo-super"/>
         </div>
-      </div>
       <div className="BarraSuperior-right">
         <img 
           src="/perfil.webp" 
@@ -30,12 +28,7 @@ const BarraSuperior = () => {
           src="/perfil.webp" 
           alt="Foto de Perfil" 
           className="foto-perfil"/>
-          <p>Olá, Usuário!</p>
-          <div>
-          <ul>
-            <li>Sair</li>
-            </ul>
-            </div>
+          <button type='exit' className='ButtonSair'>Sair</button>
           </div>
         )}
       </div>

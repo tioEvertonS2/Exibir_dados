@@ -1,8 +1,12 @@
+import './Home.css';
+
 function Home(){
     return (
       <div>
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          
+        <div>
+        <img src="/prontuario.jpg" 
+          alt="Tela inícial" 
+          className="Home"/>          
         </div>
         
       </div>

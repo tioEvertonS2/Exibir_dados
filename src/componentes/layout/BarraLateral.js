@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import './BarraLateral.css';
 import { Link } from 'react-router-dom';
 import { FiHome, FiBookOpen, FiPlus } from 'react-icons/fi';
-import { HiOutlineCog } from 'react-icons/hi';
 
-const BarraLateral = () => {
+function BarraLateral() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState(1);
 
@@ -22,9 +21,9 @@ const BarraLateral = () => {
 
   return (
     <div className={`layout ${isExpanded ? 'expanded' : ''}`}>
-      <div 
-        className={`BarraLateral ${isExpanded ? 'expanded' : ''}`} 
-        onMouseEnter={handleMouseEnter} 
+      <div
+        className={`BarraLateral ${isExpanded ? 'expanded' : ''}`}
+        onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <Link to="/" onClick={() => handleIconClick(1)}>
@@ -47,10 +46,10 @@ const BarraLateral = () => {
             {isExpanded && <span className="icon-label">Adicionar</span>}
           </div>
         </Link>
-        
+
       </div>
     </div>
   );
-};
+}
 
 export default BarraLateral;

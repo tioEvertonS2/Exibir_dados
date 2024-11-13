@@ -7,7 +7,7 @@ const doencasOptions = [
     { value: 'Diabetes tipo I', label: 'Diabetes tipo I' },
     { value: 'Diabetes tipo II', label: 'Diabetes tipo II' },
     { value: 'Hipotensão', label: 'Hipotensão' },
-    { value: 'Outros', label: 'Outros' }, // Para outros
+    { value: 'Outros', label: 'Outros' },
 ];
 
 const alergiasOptions = [
@@ -18,15 +18,15 @@ const alergiasOptions = [
     { value: 'Outros', label: 'Outros' }, 
 ];
 
-const FormularioPaciente = () => {
+const Adicionar = ({ onAddPaciente }) => {
     const [paciente, setPaciente] = useState({
         nome: '',
         cpf: '',
         dataNascimento: '',
         dataConsulta: '',
         relato: '',
-        doencasPreexistentes: '',
-        alergias: '',
+        doencasPreexistentes: [],
+        alergias: [],
         medicacoes: '',
         diagnostico: '',
         examesSolicitados: '',
@@ -50,11 +50,12 @@ const FormularioPaciente = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
-            const pacienteData = {
-                ...paciente,
-                doencasPreexistentes: JSON.stringify(paciente.doencasPreexistentes),
-                alergias: JSON.stringify(paciente.alergias),
+        onAddPaciente(paciente);
+
+        const pacienteData = {
+            ...paciente,
+            doencasPreexistentes: JSON.stringify(paciente.doencasPreexistentes),
+            alergias: JSON.stringify(paciente.alergias),
         };
 
         try {
@@ -79,7 +80,6 @@ const FormularioPaciente = () => {
         }
     };
 
-    
     return (
         <form className="formulario-paciente" onSubmit={handleSubmit}>
             <div className="form-group">
@@ -143,4 +143,4 @@ const FormularioPaciente = () => {
     );
 };
 
-export default FormularioPaciente;
+export default Adicionar;
