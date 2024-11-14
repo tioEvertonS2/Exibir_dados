@@ -1,7 +1,14 @@
-Projeto Forms do Paciente
+Projeto Exibir Forms do Paciente, editar ou apagar dados
 
 Modificações: 
 
+Alterações esteticas na Barra Lateral para alinhar malhor os ícones 
+
+Mudança do icone de nome do projeto para a logo do super na barra superior
+
+adição de uma tela em exibir que se altera de acordo com a quantidade de pacientes adiconados no banco de dados
+
+inserção rudimentar das funções de apagar e editar os dados do formulário
 
 Teste:
 
