@@ -2,9 +2,11 @@ Projeto Exibir Forms do Paciente, editar ou apagar dados
 
 Modificações: 
 
-Alterações esteticas na Barra Lateral para alinhar malhor os ícones 
+Alterações esteticas na Barra Lateral para alinhar melhor os ícones 
 
-Mudança do icone de nome do projeto para a logo do super na barra superior
+Mudança do ícone de nome do projeto para a logo do super na barra superior
+
+Adição de uma imagem de plano de fundo em Home para impedir que a informção de que nenhum paciente foi adicionado apareça no home
 
 adição de uma tela em exibir que se altera de acordo com a quantidade de pacientes adiconados no banco de dados
 
