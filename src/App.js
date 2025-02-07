@@ -6,6 +6,8 @@ import Exibir from './componentes/pages/Exibir';
 import Adicionar from './componentes/pages/Adicionar';
 import Home from './componentes/pages/Home';
 import './App.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -48,6 +50,19 @@ function App() {
                     </div>
                 </div>
             </div>
+            
+            <ToastContainer
+               position="top-right" // Posição das notificações
+               autoClose={3000} // Tempo em milissegundos para fechar automaticamente
+               hideProgressBar={false} // Mostrar barra de progresso
+               newestOnTop={false} // Novas notificações aparecem em cima ou embaixo
+               closeOnClick // Fechar ao clicar na notificação
+               rtl={false} // Direção do texto (esquerda para direita ou direita para esquerda)
+               pauseOnFocusLoss // Pausar notificações quando a janela perde o foco
+               draggable // Permitir arrastar as notificações
+               pauseOnHover // Pausar notificações ao passar o mouse 
+            />
+
         </Router>
     );
 }

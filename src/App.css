@@ -10,15 +10,16 @@
 }
 
 .pages {
-  width: 90%;
-  margin-left: 110px;
-  padding: 90px;
+  margin-left: 120px;
+  padding-top: 60px;
+  padding-right: 60px;
   flex-grow: 1;
   min-height: calc(100vh - 60px);
   overflow-x: hidden;
   color: rgb(0, 0, 0);
   position: relative;
   z-index: 10;
+  transition: all 0.3s ease;
 }
 
 html, body {
@@ -27,4 +28,9 @@ html, body {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
+}
+
+.BarraLateral.expanded + .pages{
+  margin-left: 220px;
+  padding: 90px;
 }

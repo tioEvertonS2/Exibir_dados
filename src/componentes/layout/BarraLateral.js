@@ -26,26 +26,32 @@ function BarraLateral() {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <Link to="/" onClick={() => handleIconClick(1)}>
+      <ul>
+        <li><Link to="/" onClick={() => handleIconClick(1)}>
           <div className={`icon-container ${selectedIcon === 1 ? 'selected' : ''}`}>
             <i className="icon"><FiHome /></i>
             {isExpanded && <span className="icon-label">Home</span>}
           </div>
-        </Link>
-
-        <Link to="/Exibir" onClick={() => handleIconClick(2)}>
+        </Link></li> 
+        <li> <Link to="/Exibir" onClick={() => handleIconClick(2)}>
           <div className={`icon-container ${selectedIcon === 2 ? 'selected' : ''}`}>
             <i className="icon"><FiBookOpen /></i>
             {isExpanded && <span className="icon-label">Exibir</span>}
           </div>
-        </Link>
-
-        <Link to="/Adicionar" onClick={() => handleIconClick(3)}>
+        </Link> </li>
+        <li> <Link to="/Adicionar" onClick={() => handleIconClick(3)}>
           <div className={`icon-container ${selectedIcon === 3 ? 'selected' : ''}`}>
             <i className="icon"><FiPlus /></i>
             {isExpanded && <span className="icon-label">Adicionar</span>}
           </div>
-        </Link>
+        </Link> </li>
+      </ul>  
+
+      
+
+        
+
+        
 
       </div>
     </div>

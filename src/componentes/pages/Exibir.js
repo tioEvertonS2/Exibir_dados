@@ -61,6 +61,30 @@ function Exibir({ pacientes, onDelete, onEdit }) {
                                 <label>Data de nascimento:</label> {paciente.dataNascimento}
                             </div>
                             <div className="form-group">
+                                <label>Doenças Preexistentes:</label>
+                                {paciente.doencasPreexistentes && paciente.doencasPreexistentes.length > 0 ? (
+                                    <ul>
+                                        {paciente.doencasPreexistentes.map((doenca, index) => (
+                                            <li key={index}>{doenca}</li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p>Nenhuma doença preexistente registrada.</p>
+                                )}
+                            </div>
+                            <div className="form-group">
+                                <label>Alergias:</label>
+                                {paciente.alergias && paciente.alergias.length > 0 ? (
+                                    <ul>
+                                        {paciente.alergias.map((alergia, index) => (
+                                            <li key={index}>{alergia}</li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p>Nenhuma alergia registrada.</p>
+                                )}
+                            </div>
+                            <div className="form-group">
                                 <label>Medicações em uso:</label> {paciente.medicacoes}
                             </div>
                             <div className="form-group">

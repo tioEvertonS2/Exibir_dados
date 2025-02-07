@@ -1,5 +1,5 @@
 .BarraLateral {
-  width: 70px;
+  width: 80px;
   transition: width 0.4s ease;
   display: flex;
   flex-direction: column;
@@ -7,14 +7,33 @@
   padding-top: 60px;
   background-color: #f0f7ff;
   position: fixed;
-  padding: 10px;
   height: 100%;
-  z-index: 100;
+  z-index: 1000;
   justify-content: flex-start;
+  padding: 10px;
+  padding-right: 10px;
 }
 
 .BarraLateral.expanded {
-  width: 220px;
+  width: 200px;
+}
+
+.BarraLateral ul {
+  list-style: none;
+  padding: 0;
+  padding-right: 15px;
+  margin: 5px 5px;
+  width: 100%;
+}
+
+.BarraLateral ul li {
+  cursor: pointer;
+  align-items: center;
+  gap: 5px;
+}
+
+.BarraLateral.expanded {
+  width: 200px;
   transition: 0.3ms;
 }
 
@@ -24,31 +43,29 @@ a:link, a:visited, a:active {
 }
 
 .icon-container {
-  align-items: center;
   height: 40px;
-  padding: 5px;
-  padding-top: 0%;
-  margin: 10px 0;
+  margin: 10px;
+  margin-right: 10px;
   cursor: pointer;
   border-radius: 13px;
   transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
 }
 
 .icon-container i {
-  font-size:27px;
+  font-size: 27px;
   font-weight: bold;
-  margin-left: 10px;
+  margin-left: 15px;
   max-width: 70px;
 }
 
 .icon-label {
-  font-size: 18px;
-  white-space: nowrap;
-  opacity: 0; 
+  font-size: 20px;
+  margin-left: 15px;
+  opacity: 0;
   transition: opacity 0.7s ease;
   font-weight: bold;
-  opacity: 0; 
-  transition: opacity 0.7s ease;
 }
 
 .BarraLateral.expanded .icon-label {
@@ -57,7 +74,7 @@ a:link, a:visited, a:active {
 }
 
 .BarraLateral:not(.expanded) .icon-label {
-  display: none; 
+  display: none;
 }
 
 .icon {
@@ -65,14 +82,9 @@ a:link, a:visited, a:active {
 }
 
 .icon-container:hover {
-  background-color: rgb(218, 233, 254); 
+  background-color: rgb(218, 233, 254);
 }
 
 .icon-container.selected {
   background-color: rgba(44, 142, 169, 0.555);
-}
-
-.text {
-  color: #000000;
-  font-size: 12px;
 }

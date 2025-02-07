@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import Select from 'react-select'; 
+import Select from 'react-select';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Adicionar.css';
 
 const doencasOptions = [
@@ -65,7 +67,7 @@ const Adicionar = ({ onAddPaciente }) => {
                 body: JSON.stringify(pacienteData)
             });
             if (response.ok) {
-                alert("Paciente adicionado com sucesso!");
+                toast.success("Paciente adicionado com sucesso!");
                 setPaciente({
                     nome: '', cpf: '', dataNascimento: '', dataConsulta: '',
                     relato: '', doencasPreexistentes: [], alergias: [],
@@ -73,10 +75,11 @@ const Adicionar = ({ onAddPaciente }) => {
                     anotacoesRetorno: ''
                 });
             } else {
-                alert("Erro ao adicionar paciente.");
+                toast.error("Erro ao adicionar paciente.");
             }
         } catch (error) {
             console.error("Erro ao adicionar paciente:", error);
+            toast.error("Erro ao adicionar paciente.");
         }
     };
 
